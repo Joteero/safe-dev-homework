@@ -1,0 +1,15 @@
+CREATE USER app_user
+    WITH LOGIN
+    PASSWORD '123'
+    NOSUPERUSER
+    NOCREATEDB
+    NOCREATEROLE
+    NOINHERIT;
+
+GRANT CONNECT ON DATABASE secure_app TO app_user;
+
+\connect secure_app
+
+GRANT USAGE ON SCHEMA public TO app_user;
+
+REVOKE CREATE ON SCHEMA public FROM app_user
